@@ -69,7 +69,7 @@ const Auth = () => {
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-cover">
-      <nav className="px-12 pt-6 bg-black bg-opacity-45">
+      <nav className=" container px-12 pt-6 bg-black bg-opacity-45">
         <Image src={Logo} alt="logo-image" width={120} height={120} />
       </nav>
 
