@@ -1,26 +1,26 @@
 import styles from '@/styles/Home.module.css'
-import { NextPageContext } from 'next';
-import { getSession } from 'next-auth/react';
+// import { NextPageContext } from 'next';
+// import { getSession } from 'next-auth/react';
 
 
-export async function getServerSideProps(context: NextPageContext) {
+// export async function getServerSideProps(context: NextPageContext) {
 
-  const session = await getSession(context);
+//   const session = await getSession(context);
 
-  if(!session){
-    return{
-      redirect:{
-        destination:'/auth',
-        permanent : false,
-      }
-    }
-  }
+//   if(!session){
+//     return{
+//       redirect:{
+//         destination:'/auth',
+//         permanent : false,
+//       }
+//     }
+//   }
 
-  return{
-    props: {}
-  }
+//   return{
+//     props: {}
+//   }
   
-}
+// }
 
 
 export default function Home() {
