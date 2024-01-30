@@ -1,17 +1,23 @@
 import React, { useCallback, useState } from "react";
-import { BellIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import { BellIcon, ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Logo from "@/public/images/logo.png";
 import Image from "next/image";
 import NavItem from "./NavItem";
 import MobileMenu from "./MobileMenu";
+import Red from "@/public/images/default-red.png";
+import AccountItem from "./AccountItem";
 
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [accountMenu, setAccountMenu] = useState(false);
 
-  const toggleMobileMenu = useCallback(()=>{
+  const toggleMobileMenu = useCallback(() => {
     setMobileMenu((current) => !current);
-  },[setMobileMenu]);
+  }, [setMobileMenu]);
 
+  const toggleAccountMenu = useCallback(()=>{
+    setAccountMenu((isOpen)=>!isOpen)
+  },[setAccountMenu]);
   return (
     <nav className="w-full fixed z-20">
       <div className="px-4 py-6 flex transition">
@@ -24,10 +30,27 @@ function Navbar() {
           <NavItem name="My List"></NavItem>
           <NavItem name="Browse My Languages"></NavItem>
         </div>
-        <div onClick={toggleMobileMenu} className="relative lg:hidden flex items-center gap-2 ml-6 ">
+        <div
+          onClick={toggleMobileMenu}
+          className="cursor-pointer relative lg:hidden flex items-center gap-2 ml-6 ">
           <p className="text-white">Browse</p>
           <ChevronDownIcon className="w-5 text-white"></ChevronDownIcon>
           <MobileMenu visible={mobileMenu}></MobileMenu>
+        </div>
+        <div className="flex ml-auto gap-3 items-center">
+          <div className="cursor-pointer">
+            <MagnifyingGlassIcon className="text-white w-5"></MagnifyingGlassIcon>
+          </div>
+          <div className="cursor-pointer">
+            <BellIcon className="text-white w-5"></BellIcon>
+          </div>
+          <div onClick={toggleAccountMenu} className="relative cursor-pointer flex ml-auto gap-2 items-center">
+            <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg overflow-hidden">
+              <Image src={Red} alt="ikinci" />
+            </div>
+            <ChevronDownIcon className="w-5 text-white"></ChevronDownIcon>
+            <AccountItem visible={accountMenu}></AccountItem>
+          </div>
         </div>
       </div>
     </nav>
