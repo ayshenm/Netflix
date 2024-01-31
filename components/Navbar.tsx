@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BellIcon, ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Logo from "@/public/images/logo.png";
 import Image from "next/image";
@@ -7,20 +7,40 @@ import MobileMenu from "./MobileMenu";
 import Red from "@/public/images/default-red.png";
 import AccountItem from "./AccountItem";
 
+
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
+
+  const [showBackMovie, setShowBack] = useState(false);
+
+  const topOffset = 65;
+
+  useEffect(() => {
+    const handlerScroll = () => {
+      window.screenY >= topOffset ? setShowBack(true) : setShowBack(false);
+    };
+
+
+    window.addEventListener('scroll', handlerScroll);
+
+    return() =>{
+        window.removeEventListener("scroll",handlerScroll)
+    }
+  },[]);
+
+ 
 
   const toggleMobileMenu = useCallback(() => {
     setMobileMenu((current) => !current);
   }, [setMobileMenu]);
 
-  const toggleAccountMenu = useCallback(()=>{
-    setAccountMenu((isOpen)=>!isOpen)
-  },[setAccountMenu]);
+  const toggleAccountMenu = useCallback(() => {
+    setAccountMenu((isOpen) => !isOpen);
+  }, [setAccountMenu]);
   return (
     <nav className="w-full fixed z-20">
-      <div className="px-4 py-6 flex transition">
+      <div className={`px-4 py-6 flex transition ${showBackMovie ? 'bg-zinc-950 bg-opacity-95' : ''}`}>
         <Image src={Logo} alt="first" width={120} height={24} priority className="lg:h-8" />
         <div className="lg:flex ml-12 items-center hidden gap-7">
           <NavItem name="Home" active></NavItem>
@@ -44,7 +64,9 @@ function Navbar() {
           <div className="cursor-pointer">
             <BellIcon className="text-white w-5"></BellIcon>
           </div>
-          <div onClick={toggleAccountMenu} className="relative cursor-pointer flex ml-auto gap-2 items-center">
+          <div
+            onClick={toggleAccountMenu}
+            className="relative cursor-pointer flex ml-auto gap-2 items-center">
             <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg overflow-hidden">
               <Image src={Red} alt="ikinci" />
             </div>
