@@ -40,7 +40,7 @@ function Navbar() {
   }, [setAccountMenu]);
   return (
     <nav className="w-full fixed z-20">
-      <div className={`px-4 py-6 flex transition ${showBackMovie ? 'bg-zinc-950 bg-opacity-95' : ''}`}>
+      <div className= {`px-4 py-6 flex transition ${showBackMovie ? 'bg-red-900' : 'bg-zinc-950 bg-opacity-95'} `} >
         <Image src={Logo} alt="first" width={120} height={24} priority className="lg:h-8" />
         <div className="lg:flex ml-12 items-center hidden gap-7">
           <NavItem name="Home" active></NavItem>
