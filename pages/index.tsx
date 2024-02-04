@@ -2,6 +2,7 @@ import Billborad from "@/components/Billborad";
 import MoviesList from "@/components/MoviesList";
 import Navbar from "@/components/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
+import useFavoriteMovie from "@/hooks/useFavoriteMovie";
 import useMovieList from "@/hooks/useMovieList";
 import styles from "@/styles/Home.module.css";
 import { NextPageContext } from "next";
@@ -26,21 +27,20 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home() {
   const { data: user } = useCurrentUser();
-  const {data: movies} = useMovieList();
+  const { data: movies } = useMovieList();
+  const { data: favoriteMovie } = useFavoriteMovie();
 
   return (
-   
     <>
-      {/* <h1 className="text-3xl bg-red-900 font-bold underline">Hello world!</h1>
-      <p className="text-white">{user?.email}</p>
-      <button onClick={() => signOut() } className="w-full bg-red-300 text-white">qayit</button> */}
       <Navbar />
       <Billborad />
       
+      <main className="lg:mt-10">
       <MoviesList title="Trending" data={movies}></MoviesList>
-       <div className="h-96"></div>
+      <MoviesList title="Favorite" data={favoriteMovie}></MoviesList>
 
-     
+      </main>
+      
     </>
   );
 }

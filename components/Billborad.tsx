@@ -7,7 +7,7 @@ function Billboard() {
   const { data } = useBillboard();
   return (
     
-    <div className="relative h-[32rem]">
+    <div className="relative">
       <video
         poster={data?.thumbnailUrl}
         autoPlay

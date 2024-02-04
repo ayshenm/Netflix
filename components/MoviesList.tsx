@@ -19,9 +19,9 @@ const MoviesList: React.FC<MovieListProps> = ({ data, title }) => {
     return null;
   }
   return (
-    <div className="px-4 space-y-6 lg:mt-[170px] max-ms:mt-10 ">
-      <div className="sm:pt-9">
-        <p className="text-white  mb-5 mt-5font-semibold text-lg md:text-xl lg:text-2xl ">
+    <div className="px-4">
+      <div className="">
+        <p className="text-white font-semibold text-lg md:text-xl lg:text-2xl lg:mt-5 mb-5 mt-5">
           {title}
         </p>
         <div className="">
