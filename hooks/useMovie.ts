@@ -1,17 +1,19 @@
 import fetcher from "@/libs/fetcher"
 import useSWR from "swr"
 
-const useCurrentUser = () =>{
-    const {data,error,isValidating} = useSWR('/api/current',fetcher,{
+
+const useMovie = (id? : string) =>{
+    const {data,error,isValidating} = useSWR(id ? `/api/movie/${id}` : null ,fetcher,{
         revalidateIfStale:false,
         revalidateOnFocus:false,
         revalidateOnReconnect:false
-    } );
+    });
     return {
         data,
         error,
-        isValidating, 
+        isValidating,
+        
     }
 };
 
-export default useCurrentUser;
+export default useMovie;

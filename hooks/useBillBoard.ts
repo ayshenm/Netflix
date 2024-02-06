@@ -2,7 +2,7 @@ import fetcher from "@/libs/fetcher"
 import useSWR from "swr"
 
 const UseBillBoard = () =>{
-    const {data,error,isLoading} = useSWR('/api/randommovie',fetcher,{
+    const {data,error,isValidating} = useSWR('/api/randommovie',fetcher,{
         revalidateIfStale:false,
         revalidateOnFocus:false,
         revalidateOnReconnect:false
@@ -10,7 +10,7 @@ const UseBillBoard = () =>{
     return {
         data,
         error,
-        isLoading,
+        isValidating,
        
     }
 };

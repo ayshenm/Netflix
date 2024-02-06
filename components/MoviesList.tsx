@@ -27,7 +27,7 @@ const MoviesList: React.FC<MovieListProps> = ({ data, title }) => {
         <div className="">
           <Swiper
             watchSlidesProgress={true}
-            slidesPerView={1}
+            slidesPerView={2}
             spaceBetween={10}
             speed={500}
             breakpoints={{

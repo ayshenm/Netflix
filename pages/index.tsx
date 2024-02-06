@@ -1,8 +1,10 @@
 import Billborad from "@/components/Billborad";
+import InfoModal from "@/components/InfoModal";
 import MoviesList from "@/components/MoviesList";
 import Navbar from "@/components/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavoriteMovie from "@/hooks/useFavoriteMovie";
+import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
 import styles from "@/styles/Home.module.css";
 import { NextPageContext } from "next";
@@ -29,9 +31,11 @@ export default function Home() {
   const { data: user } = useCurrentUser();
   const { data: movies } = useMovieList();
   const { data: favoriteMovie } = useFavoriteMovie();
+  const {isOpen,closeModal} = useInfoModal();
 
   return (
     <>
+    <InfoModal visible={isOpen} onClose={closeModal}></InfoModal>
       <Navbar />
       <Billborad />
       

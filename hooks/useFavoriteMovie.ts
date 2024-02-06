@@ -3,7 +3,7 @@ import useSWR from "swr"
 
 
 const useFavoriteMovie = () =>{
-    const {data,error,isLoading} = useSWR('/api/fovoritelist',fetcher,{
+    const {data,error,isValidating} = useSWR('/api/fovoritelist',fetcher,{
         revalidateIfStale:false,
         revalidateOnFocus:false,
         revalidateOnReconnect:false
@@ -11,7 +11,7 @@ const useFavoriteMovie = () =>{
     return {
         data,
         error,
-        isLoading,
+        isValidating,
         
     }
 };
