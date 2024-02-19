@@ -6,8 +6,8 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "build": "prisma generate && next build"
+    "build": "prisma generate && next build",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "16": "^0.0.2",
