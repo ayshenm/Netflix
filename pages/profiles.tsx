@@ -58,7 +58,7 @@ function Profiles() {
   const router = useRouter();
 
   const selectProfile = useCallback(() => {
-    router.push("/");
+    router.push("/movie");
   }, [router]);
 
   return (

@@ -15,7 +15,6 @@ const MobileMenu: React.FC<mobileProp> = ({ visible }) => {
         <div className="px-3 text-center text-white hover:underline cursor-pointer transition">Series</div>
         <div className="px-3 text-center text-white hover:underline cursor-pointer transition">New & Popular</div>
         <div className="px-3 text-center text-white hover:underline cursor-pointer transition">List</div>
-        <div className="px-3 text-center text-white hover:underline cursor-pointer transition"> Languages</div>
       </div>
     </div>
   );
