@@ -142,7 +142,7 @@ function Navbar() {
   }, [router]);
 
   return (
-    <nav className="w-full max-w-screen-xl fixed z-20">
+    <nav className="w-full  fixed z-20">
       <div
         className={`px-4 py-6 flex transition ${
           showBackMovie ? "bg-zinc-900" : "bg-zinc-950 bg-opacity-95"
