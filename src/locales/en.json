@@ -1,0 +1,9 @@
+{
+    "header": {
+      "title": "Merhaba Dünya!",
+      "description": "Bu, Next.js ile oluşturulmuş çoklu dilli bir uygulamadır."
+    },
+    "footer": {
+      "copyright": "© 2023"
+    }
+  }

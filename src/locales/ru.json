@@ -1,0 +1,9 @@
+{
+    "header": {
+      "title": "Merhaba!",
+      "description": "Bu, Next.js ile oluşturulmuş."
+    },
+    "footer": {
+      "copyright": "© 2023"
+    }
+  }

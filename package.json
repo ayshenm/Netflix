@@ -24,7 +24,6 @@
     "bcrypt": "^5.1.1",
     "framer-motion": "^11.0.3",
     "heroicons": "^2.1.1",
-    "i18next": "^23.9.0",
     "lodash": "^4.17.21",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
