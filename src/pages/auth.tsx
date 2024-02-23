@@ -77,11 +77,11 @@ const Auth = () => {
 
       <div className="bg-black h-full w-full bg-opacity-45 flex justify-center items-center flex-col">
         <div className="mt-24 rounded bg-black/80 py-10 md:mt-10 md:max-w-sm md:px-14">
-          <h2 className="text-white text-5xl mb-8 font-semibold">
+          <h2 className="text-white text-5xl mb-8 font-semibold max-sm:text-[2rem] max-sm:ml-5">
             {variant === "login" ? "Log-In" : "Sign-up"}
           </h2>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 max-sm:px-5">
             {variant == "register" && (
               <Input
                 id="name"
@@ -112,7 +112,7 @@ const Auth = () => {
             onClick={variant === "login" ? login : register}
             className="bg-red-700 py-3
              text-white hover:bg-red-800 transition
-            rounded-md w-full mt-5">
+            rounded-md w-full mt-5 max-sm:px-5">
             {variant === "login" ? "Login" : "Sign up"}
           </button>
           <div className="mt-4 pb-4 text-[#ccc] w-full flex justify-between cursor-pointer">
