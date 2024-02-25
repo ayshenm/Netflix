@@ -18,7 +18,7 @@ function HandleGet() {
     const session = await getSession();
 
     if (session) {
-      router.push("/movie");
+      router.push("/auth");
     } else {
       router.push("/profiles");
     }
