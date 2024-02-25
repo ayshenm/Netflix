@@ -62,7 +62,7 @@ function HandleGet() {
       <div>
       <div className="flex w-full mt-4 max-sm:flex-col justify-center items-center gap-3 ">
         <div className="">
-          <input placeholder="Email address" className="bg-white/20 border border-gray-100 p-4 min-w-[400px] focus:border-white cursor-pointer caret-white outline-green-900 max-sm:w-[200px]" />
+          <input placeholder="Email address" className="bg-white/20 border border-gray-100 p-4 min-w-[300px] focus:border-white cursor-pointer caret-white outline-green-900 max-sm:w-[300px]" />
         </div>
         <div className="">
           <button
