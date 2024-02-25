@@ -18,10 +18,10 @@ const AccountItem: React.FC<accountProp> = ({ visible }) => {
     return null;
   }
   
-  // const router = useRouter();
+  // const router = useR/outer();
 
   const handleSignOut = () => {
-    signOut({ callbackUrl: "/auth" }); // Yönlendirmeyi callbackUrl ile belirtin
+    signOut({ callbackUrl: "/auth" }); 
   };
   return (
     <div className="bg-gray-950 rounded-lg border-2 w-48 absolute

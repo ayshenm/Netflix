@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useCallback, useState } from "react";
 import Input from "@src/components/Input";
 import { useRouter } from "next/router";
@@ -8,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 // import Logo from "@/public/images/logo.png";
 import Logo from "public/images/logo.png";
+import { SpinnerCircular } from 'spinners-react';
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -27,15 +29,20 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 const Auth = () => {
+  
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [variant, setVariant] = useState("login");
 
+  const [error, setError] = useState("");
+
   const router = useRouter();
 
   const toogleVariant = useCallback(() => {
+    // setLoading(true)
     setVariant((currentVariant) => (currentVariant === "login" ? "register" : "login"));
   }, []);
 
@@ -50,6 +57,7 @@ const Auth = () => {
 
       router.push("/profiles");
     } catch (error) {
+      setError("Invalid email or password");
       console.log(error);
     }
   }, [email, password, router]);
@@ -64,9 +72,26 @@ const Auth = () => {
 
       login();
     } catch (error) {
+      setError("Registration failed"); 
       console.log(error);
     }
   }, [email, name, password, login]);
+
+
+
+  const handleClick = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    if (variant === "login") {
+      login();
+    } else {
+      register();
+    }
+  };
 
 
   return (
@@ -82,6 +107,7 @@ const Auth = () => {
           </h2>
 
           <div className="flex flex-col gap-4 max-sm:px-5">
+          {error && <div className="text-red-500">{error}</div>}
             {variant == "register" && (
               <Input
                 id="name"
@@ -91,7 +117,7 @@ const Auth = () => {
                 type="text"
               />
             )}
-
+         {error && <div className="text-red-500">{error}</div>}
             <Input
               id="email"
               value={email}
@@ -99,21 +125,30 @@ const Auth = () => {
               onChange={(e: any) => setEmail(e.target.value)}
               type="email"
             />
-
+            {error && <div className="text-red-500">{error}</div>} 
             <Input
               id="password"
               value={password}
               label="Password"
               onChange={(e: any) => setPassword(e.target.value)}
               type="text"
+              
             />
+             
           </div>
           <button
-            onClick={variant === "login" ? login : register}
+            onClick={handleClick}
             className="bg-red-700 py-3
              text-white hover:bg-red-800 transition
-            rounded-md w-full mt-5 max-sm:px-5">
-            {variant === "login" ? "Login" : "Sign up"}
+            rounded-md w-full mt-5 max-sm:px-5 flex justify-center items-center">
+            {loading ? (
+              <SpinnerCircular style={{width:"30px", height:'30px',color:"red"}} />
+
+            ) : variant === "login" ? (
+              "Login"
+            ) : (
+              "Sign up"
+            )}                
           </button>
           <div className="mt-4 pb-4 text-[#ccc] w-full flex justify-between cursor-pointer">
             <span>
@@ -132,6 +167,7 @@ const Auth = () => {
             <span
               onClick={toogleVariant}
               className="text-white ml-2 cursor-pointer hover:underline transition">
+                
               {variant === "login" ? "Sign-up now" : "Log in now."}
             </span>
           </p>

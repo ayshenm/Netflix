@@ -3,9 +3,14 @@ import { isEmpty } from "lodash";
 import { MovieInterface } from "@src/types";
 import MovieCard from "./MovieCard";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import SwiperCore, { EffectFade } from 'swiper';
+// import 'swiper/swiper-bundle.min.css';
 
 // Import Swiper styles
 import "swiper/css";
+
+
+
 
 interface MovieListProps {
   data: MovieInterface[];
@@ -19,6 +24,7 @@ const MoviesList: React.FC<MovieListProps> = ({ data, title }) => {
     return null;
   }
   return (
+    
     <div className="px-4">
       <div className="">
         <p className="text-white font-semibold text-lg md:text-xl lg:text-2xl lg:mt-5 mb-5 mt-5">
@@ -46,7 +52,7 @@ const MoviesList: React.FC<MovieListProps> = ({ data, title }) => {
             }}
             className="h-80">
             {data.map((movie) => (
-              <SwiperSlide className="" key={`${movie.id}-card`}>
+              <SwiperSlide className=" hover:transition duration-300" key={`${movie.id}-card`}>
                 <MovieCard data={movie} />
               </SwiperSlide>
             ))}

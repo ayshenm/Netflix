@@ -10,11 +10,8 @@ import Language from "./Language";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { navigationData, getActiveItem } from "@src/navigation";
-import { SpinnerCircular } from "spinners-react";
-// import LoginButton from "./LoginButton";
 
 function Navbar() {
-  const [loading, setLoading] = useState(false);
   const { pathname } = useRouter();
 
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -50,13 +47,7 @@ function Navbar() {
   }, [setAccountMenu]);
 
   const router = useRouter();
-
   const userRegister = useCallback(() => {
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
     router.push("/auth");
   }, [router]);
 
@@ -93,10 +84,7 @@ function Navbar() {
 
               <button
                 onClick={userRegister}
-                className="bg-red-700 py-2 text-white hover:bg-red-800 transition rounded-md w-20 flex  mx-auto justify-center items-center">
-                {loading ? (
-                  <SpinnerCircular style={{ width: "30px", height: "30px", color: "red" }} />
-                ) : null}
+                className="bg-red-700 py-2 text-white hover:bg-red-800 transition rounded-md w-20">
                 Sign In
               </button>
             </div>
